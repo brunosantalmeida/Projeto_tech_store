@@ -10,6 +10,35 @@ def cadastrar ():
     produto={"nome":nome, "marca":marca,"codigo":codigo,"quantidade":quantidade,"preço":preco}
     produtos.append(produto)
     
-    print(f"\nProduto {nome} cadastrado com sucesso.")
+    print(f"\nProduto [{nome} {marca}] cadastrado com sucesso.")
     
-cadastrar() 
+
+def listar ():
+    print("Produtos cadastrados:\n")
+    for produto in produtos:
+        print(f"Nome: {produto["nome"]} - Marca: {produto["marca"]} - Codigo: {produto["codigo"]} - Quantidade: {produto["quantidade"]} - Preço: {produto["preço"]}")
+    
+
+def menu ():
+    while True:
+        print("\n" ,"-" * 50)
+        print("========== MENU ==========")
+        print("1 - Cadastrar produtos")
+        print("2 - Listar produtos")
+        print("0 - sair")
+                
+        opcao=input("\nEscolha uma opção: ")
+        print("-" * 50)
+        
+        if opcao == "1":
+            cadastrar()
+        elif opcao == "2":
+            listar()
+        elif opcao == "0":
+            print("Programa encerrado.")
+            break
+        else:
+            print("Digite uma opção valida. Tente novamente.")
+        
+
+menu()
