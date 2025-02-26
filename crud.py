@@ -17,7 +17,19 @@ def listar ():
     print("Produtos cadastrados:\n")
     for produto in produtos:
         print(f"Nome: {produto["nome"]} - Marca: {produto["marca"]} - Codigo: {produto["codigo"]} - Quantidade: {produto["quantidade"]} - Preço: {produto["preço"]}")
+
+
+def deletar ():
+    codigo=input("Digite o codigo do produto que você deseja excluir: ")
     
+    for produto in produtos:
+        if produto["codigo"] == codigo:
+            produtos.remove(produto)
+            print(f"\nProduto [{produto["nome"]} {produto["marca"]}] removido com sucesso")
+            return
+    
+    print(f"Produto com codigo {codigo} não encontrado.")
+
 
 def menu ():
     while True:
@@ -25,6 +37,7 @@ def menu ():
         print("========== MENU ==========")
         print("1 - Cadastrar produtos")
         print("2 - Listar produtos")
+        print("3 - Deletar produto")
         print("0 - sair")
                 
         opcao=input("\nEscolha uma opção: ")
@@ -34,6 +47,8 @@ def menu ():
             cadastrar()
         elif opcao == "2":
             listar()
+        elif opcao == "3":
+            deletar()
         elif opcao == "0":
             print("Programa encerrado.")
             break
